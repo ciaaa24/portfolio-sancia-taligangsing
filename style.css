@@ -1,0 +1,390 @@
+
+
+/* Menggunakan variabel warna agar mudah diganti */
+:root {
+    --bg-color: #ffb6c1; /* Pink muda estetik */
+    --text-color: #000080; /* Navy */
+    --accent-color: #e60000; /* Merah untuk highlight kata */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana,sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 9% 2rem;
+}
+
+/* Gaya Header & Navigasi */
+.header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 9%; /* Spasi dihapus */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background: rgba(255, 182, 193, 0.8); /* Efek kaca (Glassmorphism) */
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+.navbar a {
+    font-size: 1.7rem; /* Spasi dihapus, ukuran disesuaikan */
+    margin-left: 4rem;
+    font-weight: 700;
+    color: var(--text-color);
+    transition: 0.3s; /* Efek halus saat hover */
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--accent-color);
+}
+
+#menu-icon {
+    font-size: 3.6rem; /* Spasi dihapus */
+    color: var(--text-color);
+    display: none;
+}
+
+/* Gaya Konten Utama */
+.home {
+    display: flex;
+    justify-content: space-between; /* Memberi jarak antara teks dan gambar */
+    align-items: center;
+    gap: 5rem;
+}
+
+.home-content h3 {
+    font-size: 3.2rem; 
+    font-weight: 700;
+}
+
+.home-content h3:nth-of-type(2) {
+    margin-bottom: 2rem;
+}
+
+span {
+    color: var(--accent-color);
+}
+
+.home-content h1 {
+    font-size: 5.6rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.home-content p {
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+/* Gaya Gambar dan Animasi */
+.home-img img {
+    width: 25vw;
+    border-radius: 50%; /* Membuat gambar menjadi bulat estetik */
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2); /* Memberi bayangan */
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+/* Definisi animasi naik turun secara halus */
+@keyframes floatImage {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-2.4rem); }
+    100% { transform: translateY(0); }
+}
+
+
+.heading {
+    text-align: center;
+    font-size: 4.5rem;
+    margin-bottom: 4rem; /* Memberi jarak antara judul dan foto */
+}
+
+/* Menggunakan CSS Grid untuk tata letak otomatis yang rapi */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+/* Efek gambar sedikit membesar saat disorot */
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Kotak teks yang menutupi gambar (Layer transparan) */
+.gallery-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), var(--accent-color));
+    color: #fff; /* Teks berwarna putih agar kontras */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%); /* Menyembunyikan layer ke bawah */
+    transition: 0.5s ease;
+}
+
+/* Memunculkan layer saat gambar disorot mouse */
+.gallery-item:hover .gallery-layer {
+    transform: translateY(0);
+}
+
+.gallery-layer h4 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.gallery-layer p {
+    font-size: 1.4rem;
+    line-height: 1.5;
+}
+
+/* Mengatur tata letak kartu blog menggunakan Grid */
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* Desain Kartu (Box) Blog */
+.blog-box {
+    background: rgba(255, 255, 255, 0.4); /* Background putih semi-transparan (glassmorphism) */
+    border-radius: 2rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.05);
+    padding: 3rem 2rem;
+    transition: 0.4s ease;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efek saat kartu di-hover */
+.blog-box:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-10px); /* Membuat kartu melayang naik */
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+}
+
+.blog-content h3 {
+    font-size: 2.4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.blog-content p {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* Styling Khusus untuk Video */
+.video-container {
+    margin-top: 2rem;
+    border-radius: 1rem;
+    overflow: hidden; /* Memastikan sudut video melengkung mengikuti container */
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+}
+
+.video-container video {
+    width: 100%; /* Membuat video menyesuaikan lebar kartu */
+    height: auto;
+    display: block; /* Menghilangkan sisa ruang kosong di bawah video */
+}
+
+
+/* Memusatkan area contact secara vertikal dan horizontal */
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 60rem; /* Membatasi lebar kotak agar tidak terlalu melar */
+}
+
+/* Desain Kotak Contact (Glassmorphism) */
+.contact-box {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 2rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.05);
+    padding: 5rem 3rem;
+    text-align: center;
+    border: 2px solid transparent;
+    transition: 0.4s ease;
+    width: 100%;
+}
+
+.contact-box:hover {
+    border-color: var(--accent-color);
+    transform: scale(1.02); /* Sedikit membesar saat di-hover */
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+    font-size: 5rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
+
+.contact-box h3 {
+    font-size: 3rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.contact-box p {
+    font-size: 1.6rem;
+    margin-bottom: 3.5rem;
+    line-height: 1.6;
+}
+
+/* Gaya untuk Tombol Email */
+.btn {
+    display: inline-block;
+    padding: 1.2rem 2.8rem;
+    background: var(--text-color); /* Warna biru navy dari variabel */
+    color: #fff;
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    transition: 0.3s ease;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background: var(--accent-color); /* Berubah merah saat di-hover */
+    transform: translateY(-5px); /* Tombol naik sedikit */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    color: #fff;
+}
+
+/* ================================ */
+/* CSS TAMBAHAN UNTUK JAVASCRIPT    */
+/* ================================ */
+
+/* --- Desain Lightbox Gallery --- */
+#lightbox {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Latar belakang hitam transparan */
+    display: none; /* Sembunyikan secara default */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Class ini akan ditambahkan oleh JS saat gambar diklik */
+#lightbox.active {
+    display: flex; 
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 1rem;
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s ease; /* Efek pop-up */
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* --- Responsive Design (Tampilan HP) --- */
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block; /* Munculkan icon hamburger jika layar kecil */
+        cursor: pointer;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3rem;
+        background: var(--bg-color); /* Warna pink */
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        display: none; /* Sembunyikan menu menyamping */
+        flex-direction: column;
+    }
+
+    /* Class ini akan ditambahkan oleh JS saat hamburger diklik */
+    .navbar.active {
+        display: flex; 
+    }
+
+    .navbar a {
+        display: block;
+        font-size: 2rem;
+        margin: 2rem 0;
+        text-align: center;
+        margin-left: 0; /* Reset margin */
+    }
+}
